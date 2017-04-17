@@ -1,0 +1,26 @@
+{
+  "name": "quentinhas",
+  "description": "controle de quentinhas",
+  "main": "index.php",
+  "authors": [
+    "ExodoTi"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "controle",
+    "quentinhas",
+    "marmitex"
+  ],
+  "homepage": "http://quentinha.exodoti.xyz",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
