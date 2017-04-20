@@ -1,0 +1,12 @@
+{
+    "name": "root/quentinhas",
+    "authors": [
+        {
+            "name": "evandrorisso",
+            "email": "evandrohrisso@gmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.3"
+    }
+}
