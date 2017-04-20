@@ -51,7 +51,11 @@ class UsuarioController{
     }
     
     public function novo(){
+        include("View/Home/Header.php");
+        include("View/Home/Menu.php");
         include("View/Usuario/insert.php");
+        include("View/Home/Footer.php");
+        include("View/Home/js.php");
     }
     
     public function editar(){
