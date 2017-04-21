@@ -34,6 +34,14 @@
           </ul>
         </li>
         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Faturamento<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Compras</a></li>
+            <li><a href="#">Vendas</a></li>
+            
+          </ul>
+        </li>
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Finanças<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Natureza de Lançamento</a></li>
