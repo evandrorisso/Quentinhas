@@ -56,12 +56,12 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span> Dashboard</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuários <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php if ($_SESSION["nome"] !=""){echo $_SESSION["nome"];}else{echo "Usuários";}; ?><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Perfil</a></li>
+            <li><a href="http://quentinha.exodoti.xyz/Usuario/editar">Perfil</a></li>
             <li><a href="#">Configurações</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Sair</a></li>
+            <li><a href="http://quentinha.exodoti.xyz/Usuario/logout">Sair</a></li>
           </ul>
         </li>
       </ul>

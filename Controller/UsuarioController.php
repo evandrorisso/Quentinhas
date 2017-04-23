@@ -13,7 +13,7 @@ class UsuarioController{
         $model = new UsuarioModel();
         $vo = new UsuariosVO();
         $vo->setNome($_POST["txtNome"]);
-        $vo->setSenha($_POST["txtSenha"]);
+        $vo->setSenha(sha1($_POST["txtSenha"]));
         $vo->setEmail($_POST["txtEmail"]);
         
         if($model->insertModel($vo)){
@@ -22,7 +22,7 @@ class UsuarioController{
             $_SESSION["msg"] = "Erro ao cadastrar o usuarios.";
         }
         
-        header("Location: ../../View/Usuario/retorno.php");
+        header("Location: http://quentinha.exodoti.xyz/Usuario/retorno");
     }
     
     public function listar(){
@@ -47,7 +47,7 @@ class UsuarioController{
             $_SESSION["msg"] = "Erro ao atualizar o usuario.";
         }
 
-        header("Location: ../../View/Usuario/retorno.php");
+        header("Location: http://quentinha.exodoti.xyz/Usuario/retorno");
     }
     
     public function novo(){
@@ -58,9 +58,33 @@ class UsuarioController{
         include("View/Home/js.php");
     }
     
+    public function retorno(){
+        include("View/Home/Header.php");
+        include("View/Home/Menu.php");
+        include("View/Usuario/retorno.php");
+        include("View/Home/Footer.php");
+        include("View/Home/js.php");
+    }
+
+    public function login(){
+        include("View/Home/Header.php");
+        include("View/Home/Menu.php");
+        include("View/Usuario/Login.php");
+        include("View/Home/Footer.php");
+        include("View/Home/js.php");
+    }
+    
+    public function logout(){
+        include("View/Home/Header.php");
+        include("View/Home/Menu.php");
+        include("View/Usuario/Logout.php");
+        include("View/Home/Footer.php");
+        include("View/Home/js.php");
+    }
+
     public function editar(){
         
-        $model = new UsuariosModel();
+        $model = new UsuarioModel();
         
         $vo = $model->getByIdModel($_GET["id"]);
         
@@ -72,6 +96,29 @@ class UsuarioController{
         include("View/Usuario/editar.php");
     }
     
+    public function logando(){
+        
+        $model = new UsuarioModel();
+        $login = $model->loginSistemaModel($_POST["txtEmail"],sha1($_POST["txtSenha"]));
+        if ($model->loginSistemaModel($_POST["txtEmail"],sha1($_POST["txtSenha"]))){
+            $vo = $model->getByEmailModel($_POST["txtEmail"]);
+            $_SESSION["id"] = $vo->getId();
+            $_SESSION["nome"] = $vo->getNome();
+            $_SESSION["email"] = $vo->getEmail();
+            $_SESSION["senha"] = $vo->getSenha();
+            header('location:http://quentinha.exodoti.xyz/');
+        }else{
+            unset ($_SESSION['nome']);
+            unset ($_SESSION['senha']);
+            unset ($_SESSION['id']);
+            unset ($_SESSION['email']);
+            $_SESSION["msg"] = "Usuário ou Senha Errados.";
+            header("Location: http://quentinha.exodoti.xyz/Usuario/retorno");
+        }
+        
+    }
+
+
     public function delete(){
         
         $model = new ProdutoModel();

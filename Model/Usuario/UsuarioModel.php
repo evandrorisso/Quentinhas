@@ -30,6 +30,28 @@ class UsuarioModel{
 
         return $vo;
     }
+    public function getByEmailModel($email){
+        $prod = new UsuarioDAO();
+        $vo = $prod->readingByEmail($email);
+ 
+        // Regra de Negocio
+        //if($_GET["Action"] != "editar")
+        //    $vo->setPreco("R$ ".number_format($vo->getPreco(), 2, ',', '.'));
+
+        return $vo;
+    }
+
+    public function loginSistemaModel($email,$senha){
+        $prod = new UsuarioDAO();
+        $vo = $prod->loginSistema($email,$senha);
+ 
+        // Regra de Negocio
+        //if($_GET["Action"] != "editar")
+        //    $vo->setPreco("R$ ".number_format($vo->getPreco(), 2, ',', '.'));
+
+        return $vo;
+    }
+
     
     public function getAllModel(){
         $prod = new UsuarioDAO();

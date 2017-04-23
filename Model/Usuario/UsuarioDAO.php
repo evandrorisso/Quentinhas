@@ -64,6 +64,38 @@ class UsuarioDAO{
         
         return $vo;
 	}
+    public function readingByEmail($email){
+        $SQL = "SELECT * FROM usuarios WHERE email = '".  addslashes($email)."'";
+        
+        $DB = new DB();
+        $DB->getConnection();
+        $query = $DB->execReader($SQL);
+        
+        $vo = new UsuariosVO();
+        
+        while($reg = $query->fetch_array(MYSQLI_ASSOC)){
+            $vo->setId($reg["id"]);
+            $vo->setNome($reg["nome"]);
+            $vo->setEmail($reg["email"]);
+            $vo->setSenha($reg["senha"]);
+        }
+        
+        return $vo;
+    }
+    public function loginSistema($email,$senha){
+        $SQL = "SELECT * FROM usuarios WHERE email = '".  addslashes($email)."' and senha='".addslashes($senha)."';";
+        
+        $DB = new DB();
+        $DB->getConnection();
+        $query = $DB->execReader($SQL);
+        if($query->num_rows > 0)
+        {
+            return true;
+        }      
+        else{
+            return false;
+        }
+    }
 	public function readingAll(){
 		$SQL = "SELECT * FROM usuarios";
         
